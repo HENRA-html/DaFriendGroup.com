@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Lock</title>
-    <h1 style = "color:lime;text-align:center"> A password is required to access this page</h1>
     <style>
-        body{
+        body {
             background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: lime;
+            text-align: center;
+        }
+        .button {
+            background-color: black;
+            color: lime;
+            border: 2px solid lime;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
         }
     </style>
 </head>
+<body>
+    <h1>A password is required to access this page</h1>
+    <a href="Password-Page.html" class="button">NEXT</a>
+</body>
 </html>
