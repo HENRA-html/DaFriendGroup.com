@@ -4,26 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Lock</title>
-    <h1 style = "color:lime;"> A password is required to access this page</h1>
+    <h1 style = "color:lime;text-align:center"> A password is required to access this page</h1>
     <style>
         body{
             background-color: black;
         }
     </style>
-</head>
-<body>
-    <script>
-        let password = "$Volpe9$";
-        (function passcodeprotect() {
-            let passcode = prompt("Enter Password");
-            while (passcode !== password) {
-                alert("Incorrect PassCode");
-                return passcodeprotect();
-            }
-        }());
-        alert('Directing to homepage');
-        document.getElementById("container")
-            .style.display = "block";
-    </script>
-</body>
-</html>
