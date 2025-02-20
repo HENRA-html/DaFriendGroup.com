@@ -12,6 +12,18 @@
     </style>
 </head>
 <body>
-    
+    <script>
+        let password = "$Volpe9$";
+        (function passcodeprotect() {
+            let passcode = prompt("Enter Password");
+            while (passcode !== password) {
+                alert("Incorrect PassCode");
+                return passcodeprotect();
+            }
+        }());
+        alert('Directing to homepage');
+        document.getElementById("container")
+            .style.display = "block";
+    </script>
 </body>
 </html>
