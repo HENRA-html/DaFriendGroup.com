@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Messaging System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .chat-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .sender {
+            font-weight: bold;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 20px;
+        }
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-container button {
+            padding: 10px;
+            margin-left: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container" id="chat">
+    <div class="message" id="message-template" style="display: none;">
+        <span class="sender"></span>: <span class="text"></span>
+        <img class="image" src="" alt="" style="display:none;">
+    </div>
+</div>
+
+<div class="input-container">
+    <input type="text" id="message-input" placeholder="Type here">
+    <input type="file" id="image-input" accept="image/*">
+    <button id="send-button">Send</button>
+</div>
+
+<script>
+    const chat = document.getElementById('chat');
+    const messageInput = document.getElementById('message-input');
+    const imageInput = document.getElementById('image-input');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', () => {
+        const messageText = messageInput.value;
+        const imageFile = imageInput.files[0];
+        const senderName = "User"; // Replace with actual user name
+
+        const messageElement = document.getElementById('message-template').cloneNode(true);
+        messageElement.style.display = 'block';
+        messageElement.querySelector('.sender').textContent = senderName;
+        messageElement.querySelector('.text').textContent = messageText;
+
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                messageElement.querySelector('.image').src = e.target.result;
+                messageElement.querySelector('.image').style.display = 'block';
+            }
+            reader.readAsDataURL(imageFile);
+        }
+
+        chat.appendChild(messageElement);
+        messageInput.value = '';
+        imageInput.value = '';
+    });
+</script>
+
+</body>
+</html>
